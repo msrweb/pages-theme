@@ -1,0 +1,28 @@
+# main links
+main:
+  - title: "Quick-Start Guide"
+    url: /docs/quick-start-guide/
+  - title: "Code"
+    url: #
+  - title: "Releases" 
+    url: #
+
+# documentation links
+docs:
+  - title: Section One
+    children:
+      - title: "Quick-Start Guide"
+        url: /docs/quick-start-guide/
+      - title: "Item Two"
+        url: /docs/section-1-page-2/
+      - title: "Item Three"
+        url: /docs/section-1-page-3/
+
+  - title: Section Two
+    children:
+      - title: "Item One"
+        url: /docs/section-2-page-1/
+      - title: "Item Two"
+        url: /docs/section-2-page-2/
+      - title: "Item Three"
+        url: /docs/section-2-page-3/

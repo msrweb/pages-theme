@@ -1,0 +1,146 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+search: false
+---
+
+@charset "utf-8";
+
+$doc-font-size: 16 !default;
+
+$sans-serif: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$global-font-family: $sans-serif;
+$header-font-family: $sans-serif;
+
+$primary-color: #6f777d !default;
+$primary-action-color: #0067b8 !default;
+$success-color: #3fa63f !default;
+$warning-color: #d67f05 !default;
+$danger-color: #ee5f5b !default;
+$info-color: #3b9cba !default;
+$focus-color: $primary-color !default;
+$active-color: mix(#fff, $primary-color, 80%) !default;
+$facebook-color: #3b5998 !default;
+$twitter-color: #55acee !default;
+$linkedin-color: #007bb6 !default;
+
+$link-color: $primary-action-color;
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+$buttoncolors:
+  (primary, #0067b8),
+  (inverse, #fff),
+  (light-outline, transparent),
+  (success, $success-color),
+  (warning, $warning-color),
+  (danger, $danger-color),
+  (info, $info-color),
+  (facebook, $facebook-color),
+  (twitter, $twitter-color),
+  (linkedin, $linkedin-color);
+
+html {
+	font-size: #{$doc-font-size}px;
+
+	@include breakpoint($medium) {
+		font-size: #{$doc-font-size}px;
+	}
+
+	@include breakpoint($large) {
+		font-size: #{$doc-font-size}px;
+	}
+
+	@include breakpoint($x-large) {
+		font-size: #{$doc-font-size}px;
+	}
+}
+
+.btn {
+	@each $buttoncolor, $color in $buttoncolors {
+		&--#{$buttoncolor} {
+			@include yiq-contrasted($color);
+			@if ($buttoncolor == inverse) {
+			border: 1px solid $border-color;
+			}
+			@if ($buttoncolor == light-outline) {
+			border: 1px solid #fff;
+			}
+
+			&:visited {
+			@include yiq-contrasted($color);
+			}
+
+			&:hover {
+			@include yiq-contrasted(mix(#000, $color, 20%));
+			}
+		}
+	}
+}
+
+.masthead {
+	.site-logo {
+		width: 130px;
+	}
+
+	.site-title {
+		&:before {
+			border-left: 2px solid #000;
+			height: 24px;
+			content: " ";
+			margin-left: 7px;
+			margin-right: 14px;
+		}
+	}
+
+	.greedy-nav {
+		.visible-links {
+			a {
+				&:before {
+					height: 2px;
+					-webkit-transition: $global-transition;
+					transition: $global-transition;
+					-webkit-transform: none;
+					transform: none;
+					display: none;
+				}
+
+				&:hover:before {
+					-webkit-transform: none;
+					-ms-transform: none;
+					transform: none;
+					display: initial;
+				}
+			}
+		}
+	}
+}
+
+.feature__wrapper{
+	border-bottom: none;
+}
+
+#page-title {
+	margin-bottom: 1em;
+}
+
+.sidebar {
+	li {
+		font-size: 1em;
+
+		li {
+			margin: 0.35em 0;
+			font-size: 1em;
+		}
+	}
+
+	.nav__list {
+		.nav__items {
+			font-size: 1em;
+		}
+
+		.nav__sub-title {
+			font-size: 1em;
+		}
+	}
+}
